@@ -12,7 +12,14 @@ class User(BaseModel):
     location: str
     email: str
     picture: str
-    created: datetime
-    updated: datetime
-    solutions: List[Solution]
-    problems: List[Problem]
+
+    class Config:
+        from_attributes=True
+
+class UserPayload(BaseModel):
+    login: str
+    name: str
+    company: str
+    location: str
+    email: str
+    picture: str

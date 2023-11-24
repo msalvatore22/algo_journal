@@ -1,6 +1,6 @@
 fastapi[all]
 pydantic
-sqlalchemy
-psycopg2
-psycopg2-binary
+sqlalchemy[asyncio]
+asyncpg
 alembic
+psycopg2

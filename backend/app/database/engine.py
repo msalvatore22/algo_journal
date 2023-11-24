@@ -1,4 +1,3 @@
-import psycopg2
 import os
 from sqlalchemy.ext.asyncio import create_async_engine
 from functools import lru_cache
