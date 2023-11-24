@@ -33,3 +33,16 @@ async def get_user(
             detail="User does not exist"
         )
     return User.model_validate(user)
+
+@router.delete("/users/{id}", status_code=status.HTTP_200_OK)
+async def delete_user(
+    id: int,
+    repository: UserRepository
+) -> str:
+    deletion = await repository.delete(id)
+    if deletion is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="User does not exist"
+        )
+    return deletion

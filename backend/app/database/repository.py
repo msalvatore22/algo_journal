@@ -21,3 +21,17 @@ class DBRepository(Generic[Model]):
     
     async def get(self, id: int) -> Model | None:
         return await self.session.get(self.model, id)
+    
+    # async def update(self, data: dict) -> Model:
+    #     instance = self.model(**data)
+    #     self.session.add(instance)
+    #     await self.session.commit()
+    #     await self.session.refresh(instance)
+    #     return instance
+    
+    async def delete(self, id: int) -> str:
+        instance = await self.session.get(self.model, id)
+        await self.session.delete(instance)
+        await self.session.commit()
+        return f'User: {id} deleted'
+    

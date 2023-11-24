@@ -4,10 +4,12 @@ from sqlalchemy import DateTime, Column
 from sqlalchemy.orm import Mapped
 from sqlalchemy.orm import mapped_column
 import datetime
+from sqlalchemy.ext.asyncio import AsyncAttrs
 
 
 
-class Base(DeclarativeBase):
+
+class Base(AsyncAttrs, DeclarativeBase):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     # created: Mapped[datetime.datetime] = mapped_column(
     #     DateTime(timezone=True), server_default=func.now()
