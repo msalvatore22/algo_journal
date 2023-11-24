@@ -13,7 +13,7 @@ from app.models.base import Base
 class DBSolution(Base, SQLModel):
     __tablename__ = "solutions"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     code: Mapped[str]
     duration: Mapped[Optional[time]] = mapped_column(Time)
     created: Mapped[datetime] = mapped_column(DateTime)

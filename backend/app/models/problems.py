@@ -16,7 +16,7 @@ from app.models.base import Base
 class DBProblem(Base, SQLModel):
     __tablename__ = "problems"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     title: Mapped[str] = mapped_column(String(50))
     description: Mapped[str]
     difficulty: Mapped[str] = mapped_column(String(6))

@@ -14,7 +14,7 @@ from app.models.base import Base
 class DBUser(Base, SQLModel):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     login: Mapped[str]
     name: Mapped[str]
     company: Mapped[Optional[str]]
