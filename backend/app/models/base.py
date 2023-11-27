@@ -15,3 +15,4 @@ class Base(AsyncAttrs, DeclarativeBase):
     updated = Column(DateTime(timezone=True), 
                        default=None, onupdate=datetime.datetime.utcnow)
 
+    __mapper_args__ = {"eager_defaults": True}

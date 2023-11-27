@@ -41,3 +41,11 @@ class DBRepository(Generic[Model]):
         await self.session.commit()
         return f'User: {id} deleted'
     
+    async def filter(
+        self,
+        *expressions: BinaryExpression,
+    ) -> list[Model]:
+        query = select(self.model)
+        if expressions:
+            query = query.where(*expressions)
+        return list(await self.session.scalars(query))

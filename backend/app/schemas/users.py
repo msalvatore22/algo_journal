@@ -12,17 +12,11 @@ class User(BaseModel):
     location: str
     email: str
     picture: str
+    created: Optional[datetime] = None
+    updated: Optional[datetime] = None
 
     class Config:
         from_attributes=True
-
-class UserPayload(BaseModel):
-    login: Optional[str] = None
-    name: Optional[str] = None
-    company: Optional[str] = None
-    location: Optional[str] = None
-    email: Optional[str] = None
-    picture: Optional[str] = None
 
 class UserPayloadRequired(BaseModel):
     login: str
@@ -31,3 +25,11 @@ class UserPayloadRequired(BaseModel):
     location: str
     email: str
     picture: str
+
+class UserPayload(BaseModel):
+    login: Optional[str] = None
+    name: Optional[str] = None
+    company: Optional[str] = None
+    location: Optional[str] = None
+    email: Optional[str] = None
+    picture: Optional[str] = None

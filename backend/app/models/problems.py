@@ -1,7 +1,5 @@
 from typing import List
 from typing import Optional
-from datetime import datetime
-from sqlalchemy import DateTime
 from sqlalchemy import String
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped
@@ -23,5 +21,5 @@ class DBProblem(Base, SQLModel):
     notes: Mapped[Optional[str]]
     leetcode_import: Mapped[bool]
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
-    solutions: Mapped[List[DBSolution]] = relationship()
-    tags: Mapped[List[DBTag]] = relationship(secondary=problem_tags)
+    solutions: Mapped[List[DBSolution]] = relationship(lazy="selectin")
+    tags: Mapped[List[DBTag]] = relationship(secondary=problem_tags, lazy="selectin")

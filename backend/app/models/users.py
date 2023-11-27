@@ -20,5 +20,5 @@ class DBUser(Base, SQLModel):
     location: Mapped[str]
     email: Mapped[str]
     picture: Mapped[Optional[str]]
-    solutions: Mapped[List[DBSolution]] = relationship()
-    problems: Mapped[List[DBProblem]] = relationship()
+    solutions: Mapped[List[DBSolution]] = relationship(lazy="selectin")
+    problems: Mapped[List[DBProblem]] = relationship(lazy="selectin")
