@@ -11,11 +11,7 @@ from sqlalchemy.ext.asyncio import AsyncAttrs
 
 class Base(AsyncAttrs, DeclarativeBase):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    # created: Mapped[datetime.datetime] = mapped_column(
-    #     DateTime(timezone=True), server_default=func.now()
-    # )
-    # updated: Mapped[datetime.datetime] = mapped_column(
-    #     DateTime(timezone=True), onupdate=func.now()
-    # )
+    created = Column(DateTime(timezone=True), default=datetime.datetime.utcnow)
+    updated = Column(DateTime(timezone=True), 
+                       default=None, onupdate=datetime.datetime.utcnow)
 
-    # __mapper_args__ = {"eager_defaults": True}

@@ -33,7 +33,6 @@ class DBRepository(Generic[Model]):
         await self.session.refresh(instance)
         return instance
     
-    
     async def delete(self, id: int) -> str | None:
         instance = await self.session.get(self.model, id)
         if instance is None:
