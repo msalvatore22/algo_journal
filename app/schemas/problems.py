@@ -9,9 +9,9 @@ class Problem(BaseModel):
     title: str
     description: str
     difficulty: str
-    patterns: str
+    approach: str
     notes: str
-    leetcode_import: bool
+    problem_link: str
     created: Optional[datetime] = None
     updated: Optional[datetime] = None
     user_id: int
@@ -23,16 +23,15 @@ class ProblemPayloadRequired(BaseModel):
     title: str
     description: str
     difficulty: str
-    patterns: str
+    approach: str
     notes: str
-    leetcode_import: bool
     user_id: int
 
 class ProblemPayload(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     difficulty: Optional[str] = None
-    patterns: Optional[str] = None
+    approach: Optional[str] = None
     notes: Optional[str] = None
-    leetcode_import: Optional[bool] = None
     user_id: Optional[int] = None
+    problem_link: Optional[str] = None
