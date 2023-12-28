@@ -4,20 +4,14 @@ from typing import List, Optional
 
 class Solution(BaseModel):
     id: int
-    code: str
-    duration: time
-    created: datetime
-    updated: datetime
+    code: Optional[str]
+    duration: Optional[time]
+    created: Optional[datetime]
+    updated: Optional[datetime]
     problem_id: int
     user_id: int
 
-class SolutionPayload(BaseModel):
-    code: Optional[str] = None
-    duration: Optional[time] = None
-    problem_id: int
-    user_id: int
-
-class SolutionPayloadRequired(BaseModel):
+class SolutionRequired(BaseModel):
     code: str
     duration: time
     problem_id: int

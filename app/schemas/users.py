@@ -6,19 +6,19 @@ from app.schemas.problems import Problem
 
 class User(BaseModel):
     id: int
-    login: str
-    name: str
-    company: str
-    location: str
-    email: str
-    picture: str
+    login: Optional[str]
+    name: Optional[str]
+    company: Optional[str]
+    location: Optional[str]
+    email: Optional[str]
+    picture: Optional[str]
     created: Optional[datetime] = None
     updated: Optional[datetime] = None
 
     class Config:
         from_attributes=True
 
-class UserPayloadRequired(BaseModel):
+class UserRequired(BaseModel):
     login: str
     name: str
     company: str
@@ -26,10 +26,3 @@ class UserPayloadRequired(BaseModel):
     email: str
     picture: str
 
-class UserPayload(BaseModel):
-    login: Optional[str] = None
-    name: Optional[str] = None
-    company: Optional[str] = None
-    location: Optional[str] = None
-    email: Optional[str] = None
-    picture: Optional[str] = None

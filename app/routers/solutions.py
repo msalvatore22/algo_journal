@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from typing import Annotated
 
-from app.schemas.solutions import Solution, SolutionPayload, SolutionPayloadRequired
+from app.schemas.solutions import Solution, Solution, SolutionRequired
 from app.database.repository import DBRepository
 from app.models.solutions import DBSolution
 from app.dependencies.get_repository import get_repository
@@ -15,7 +15,7 @@ router = APIRouter()
 
 @router.post("/solutions", status_code=status.HTTP_201_CREATED)
 async def create_solution(
-    data: SolutionPayload,
+    data: Solution,
     repository: SolutionRepository
 ) -> Solution:
     solution = await repository.create(data.model_dump())
@@ -23,7 +23,7 @@ async def create_solution(
 
 @router.patch("/solutions/{id}", status_code=status.HTTP_200_OK)
 async def patch_solution(
-    data: SolutionPayload,
+    data: Solution,
     id: int,
     repository: SolutionRepository
 ) -> Solution:
@@ -37,7 +37,7 @@ async def patch_solution(
 
 @router.put("/solutions/{id}", status_code=status.HTTP_200_OK)
 async def update_solution(
-    data: SolutionPayloadRequired,
+    data: SolutionRequired,
     id: int,
     repository: SolutionRepository
 ) -> Solution:

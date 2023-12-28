@@ -10,4 +10,5 @@ app.include_router(solution_router)
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Server is running"}
+
